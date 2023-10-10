@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "swlf"
+version = "0.1.0"
+description = "Project management framework and package"
+authors = ["green-dino <104174275+green-dino@users.noreply.github.com>"]
+license = "CC"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
