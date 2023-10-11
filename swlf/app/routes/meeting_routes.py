@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from ..models import CrewMember
-from ..models import log_meeting_hours
+from models import CrewMember
+from models import log_meeting_hours
 
 
 meeting_bp = Blueprint('meeting', __name__)

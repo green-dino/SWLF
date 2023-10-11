@@ -39,8 +39,8 @@ class Task:
         self.ProjectLead = None
         self.ProjectAssistant = None
         self.current_status = "Not Started"
-        self.due_date = None
-        self.date_completed = None
+        self.due_date = datetime
+        self.date_completed = datetime
         self.estimated_time = None
         self.actual_time = None
 

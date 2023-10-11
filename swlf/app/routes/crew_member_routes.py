@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from ..models import CrewMember
+from models import CrewMember
 
 crew_member_bp = Blueprint('crew_member', __name__)
 
