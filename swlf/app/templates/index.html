@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Information</title>
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+<body>
+    <h1>Project Information</h1>
+
+    <h2>Crew Members:</h2>
+    <ul>
+        <li id="crew_member_info1"></li>
+        <li id="crew_member_info2"></li>
+        <li id="crew_member_info3"></li>
+    </ul>
+
+    <h2>Tasks:</h2>
+    <ul>
+        <li id="task_info1"></li>
+    </ul>
+
+    <h2>Meeting Logs:</h2>
+    <ul>
+        <li id="meeting_logs1"></li>
+        <li id="meeting_logs2"></li>
+        <li id="meeting_logs3"></li>
+    </ul>
+
+    <script>
+        // JavaScript code to populate the HTML elements with Python data
+        function populateData() {
+            // Crew Member Information
+            document.getElementById("crew_member_info1").innerHTML = "<strong>Crew Member 1:</strong> John Doe, john@example.com";
+            document.getElementById("crew_member_info2").innerHTML = "<strong>Project Lead 1:</strong> Alice Smith, alice@example.com, Project Lead for: Project A";
+            document.getElementById("crew_member_info3").innerHTML = "<strong>Project Assistant 1:</strong> Bob Johnson, bob@example.com, Project Assistant for: Project B";
+
+            // Task Information
+            document.getElementById("task_info1").innerHTML = "<strong>Task 1:</strong> Write a report<br>" +
+                "<strong>Project Lead:</strong> Alice Smith, alice@example.com, Project Lead for: Project A<br>" +
+                "<strong>Project Assistant:</strong> Bob Johnson, bob@example.com, Project Assistant for: Project B<br>" +
+                "<strong>Current Status:</strong> In Progress<br>" +
+                "<strong>Due Date:</strong> 2023-12-31<br>" +
+                "<strong>Estimated Time:</strong> 4<br>" +
+                "<strong>Actual Time:</strong> N/A";
+
+            // Meeting Logs
+            document.getElementById("meeting_logs1").innerHTML = "<strong>Meeting logs for Crew Member 1:</strong><br>" +
+                "Start Time: 2023-10-15 09:00:00, Stop Time: 2023-10-15 11:30:00";
+
+            document.getElementById("meeting_logs2").innerHTML = "<strong>Meeting logs for Project Lead 1:</strong><br>" +
+                "Start Time: 2023-10-15 09:00:00, Stop Time: 2023-10-15 11:30:00";
+
+            document.getElementById("meeting_logs3").innerHTML = "<strong>Meeting logs for Project Assistant 1:</strong><br>" +
+                "Start Time: 2023-10-15 09:00:00, Stop Time: 2023-10-15 11:30:00";
+        }
+
+        // Call the populateData function when the page loads
+        window.onload = populateData;
+    </script>
+</body>
+</html>

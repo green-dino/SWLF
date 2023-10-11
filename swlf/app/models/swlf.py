@@ -33,34 +33,6 @@ class ProjectAssistant(CrewMember):
     def get_info(self):
         return f"Name: {self.name}, Email: {self.email}, Project Assistant for: {self.project_name}"
 
-crew_member1 = CrewMember("John Doe", "john@example.com")
-project_lead1 = ProjectLead("Alice Smith", "alice@example.com", "Project A")
-project_assistant1 = ProjectAssistant("Bob Johnson", "bob@example.com", "Project B")
-
-def print_crew_member_info(crew_member):
-    print(crew_member.get_info())
-
-def assign_project(crew_member, project_name):
-    if isinstance(crew_member, (ProjectLead, ProjectAssistant)):
-        crew_member.project_name = project_name
-    else:
-        print("Only Project Leads & Assistants can be assigned to Projects")
-
-class AssignProject:
-    @staticmethod
-    def assign_project(crew_member, project_name):
-        if isinstance(crew_member, (ProjectLead, ProjectAssistant)):
-            crew_member.project_name = project_name
-        else:
-            print("Only Project Leads & Assistants can be assigned to Projects")
-    
-    @staticmethod
-    def unassign_project(crew_member):
-        if isinstance(crew_member, (ProjectLead, ProjectAssistant)):
-            crew_member.project_name = None
-        else:
-            print("Only Project Leads & Assistants can be assigned to Projects")
-
 class Task:
     def __init__(self, task_description):
         self.task_description = task_description
@@ -71,18 +43,18 @@ class Task:
         self.date_completed = None
         self.estimated_time = None
         self.actual_time = None
-    
+
     def mark_as_started(self):
         self.current_status = "In Progress"
-    
+
     def mark_as_completed(self, date_completed, actual_time):
         self.current_status = "Done"
         self.date_completed = date_completed
         self.actual_time = actual_time
-    
+
     def update_due_date(self, due_date):
         self.due_date = due_date
-    
+
     def update_estimated_time(self, estimated_time):
         self.estimated_time = estimated_time
 
@@ -122,30 +94,30 @@ class TaskList:
                 return task
         return None
 
-    def get_all_tasks(self):
-        return self.tasks
-
-# Function to log meeting hours
-def log_meeting_hours(crew_members, start_time, stop_time):
-    for member in crew_members:
+def log_meeting_hours(meeting_attendees, start_time, stop_time):
+    for member in meeting_attendees:
         member.log_meeting_hours(start_time, stop_time)
 
 # Example usage:
 
+crew_member = CrewMember("John Doe", "john@example.com")
+project_lead = ProjectLead("Alice Smith", "alice@example.com", "Project A")
+project_assistant = ProjectAssistant("Bob Johnson", "bob@example.com", "Project B")
+
 # Assign crew members to a task
 task1 = Task("Write a report")
-task1.assign_person(project_lead1)
-task1.assign_person(project_assistant1)
+task1.assign_person(project_lead)
+task1.assign_person(project_assistant)
 task1.update_due_date("2023-12-31")
 task1.update_estimated_time(4)
 task1.mark_as_started()
 
 # Create a list of crew members present in the meeting
-meeting_attendees = [crew_member1, project_lead1, project_assistant1]
+meeting_attendees = [crew_member, project_lead, project_assistant]
 
 # Log meeting hours for each attendee
-meeting_start_time = datetime.datetime(2023, 10, 15, 9, 0)  # Example start time
-meeting_stop_time = datetime.datetime(2023, 10, 15, 11, 30)  # Example stop time
+meeting_start_time = datetime.datetime(2023, 10, 15, 9, 0)
+meeting_stop_time = datetime.datetime(2023, 10, 15, 11, 30)
 log_meeting_hours(meeting_attendees, meeting_start_time, meeting_stop_time)
 
 # Print meeting logs for each crew member
