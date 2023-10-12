@@ -1,7 +1,4 @@
 import pandas as pd
-import networkx as nx
-import matplotlib.pyplot as plt
-import plotly.graph_objects as go   
 
 # Create a list of relationships
 relationships = [
@@ -86,50 +83,3 @@ while True:
 
 # Display the DataFrame
 print(pb_relations_df)
-
-
-rows = pb_relations_df.shape[0]
-cols = pb_relations_df.shape[1]
-
-print(f'{pb_relations_df.shape} --> {rows} rows and {cols} columns')
-
-# Create a NetworkX graph
-G = nx.Graph()
-
-# Iterate through the DataFrame and add nodes and edges
-for index, row in pb_relations_df.iterrows():
-    G.add_node(row['From Node'], label=row['From Entity'])
-    G.add_node(row['To Node'], label=row['To Entity'])
-    G.add_edge(row['From Node'], row['To Node'], label=row['Relationship'])
-
-# Calculate node positions using a layout algorithm (e.g., Kamada-Kawai)
-pos = nx.kamada_kawai_layout(G)
-
-# Create a Plotly figure
-fig = go.Figure()
-
-# Create nodes
-for node in G.nodes:
-    fig.add_trace(go.Scatter(x=[pos[node][0]], y=[pos[node][1]], mode='markers+text', marker=dict(size=20), text=[G.nodes[node]['label'], node], textposition='bottom center'))
-
-# Create edges
-edge_x = []
-edge_y = []
-for edge in G.edges:
-    x0, y0 = pos[edge[0]]
-    x1, y1 = pos[edge[1]]
-    edge_x.extend([x0, x1, None])
-    edge_y.extend([y0, y1, None])
-
-fig.add_trace(go.Scatter(x=edge_x, y=edge_y, mode='lines', line=dict(width=0.5, color='#888')))
-
-# Update the layout
-fig.update_layout(
-    showlegend=False,
-    hovermode='closest',
-    title='Interactive Network Graph',
-    title_x=0.5,
-)
-
-# Show the interactive graph
-fig.show(renderer='browser')

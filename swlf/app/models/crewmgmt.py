@@ -1,7 +1,5 @@
 import datetime
 
-import datetime
-
 class CrewMember:
     def __init__(self, name, email):
         self.name = name

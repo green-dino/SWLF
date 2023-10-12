@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from models.swlf import CrewMember
 
 
+
 app = Flask(__name__)
 
 crew_members = []
@@ -17,7 +18,6 @@ def add_crew_member():
     crew_member = CrewMember(name, email)
     crew_members.append(crew_member)
     return redirect(url_for('index'))
-
 
 if __name__ == '__main__':
     app.run(debug=True)
